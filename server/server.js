@@ -18,11 +18,19 @@ const serverHelpers = require('./serverHelpers')
 const app = express();
 const Submission = require('../db/submissionModel.js');
 
-app.use(express.static(path.resolve(__dirname, '..', 'build')));
+// app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+// });
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+
+
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
