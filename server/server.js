@@ -39,7 +39,8 @@ app.post('/submission', serverHelpers.createSubmission);
 // });
 
 const mongoose = require('mongoose');
-const mongoURL = process.env.MONGODB_URI || 'mongodb://localhost/dusato'
+const mongoURL = process.env.MONGODB_URI || 'mongodb://localhost/dusato';
+console.log('mongoURL: ', mongoURL)
 mongoose.connect(mongoURL);
 
 var db = mongoose.connection;
