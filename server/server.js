@@ -17,9 +17,13 @@ const errorHandler = require('errorhandler');
 const serverHelpers = require('./serverHelpers')
 const app = express();
 const Submission = require('../db/submissionModel.js');
-app.use(express.static('../build'));
 
-app.set('port', process.env.PORT || 3000);
+app.use(express.static(path.resolve(__dirname, '..', 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
+});
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(logger('dev'));
@@ -31,23 +35,33 @@ app.use(multer());
 
 
 app.post('/submission', serverHelpers.createSubmission);
-// app.post('/submission', (req, res) => {
-//   console.log('req.body: ', req.body)
-//   res.status(200).send("Server response: submission post")
+// app.get('/', (req, res) => {
+//   console.log('yoyo')
+//   console.log(path.join(__dirname, '../build/'))
+//   res.sendFile(path.join(__dirname, '../build/'));
 // });
+
 
 const mongoose = require('mongoose');
 const mongoURL = process.env.MONGODB_URI || 'mongodb://localhost/dusato';
 console.log('mongoURL: ', mongoURL)
 mongoose.connect(mongoURL);
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('were connected to mongo')
 });
 
+let port = process.env.PORT;
 
-app.listen(process.env.PORT || 3000, function () {
-  console.log('Server listening on port ' + process.env.PORT || 3000);
+if (port === undefined) {
+  port = 3000;
+}
+
+app.listen(port, function () {
+  console.log('Server listening on port ' + port);
 });
+
+
+
