@@ -3,8 +3,6 @@ import './App.css';
 
 class Drawer extends Component {
 
-
-
   renderDrawerOption(option, toggleModalOn, i) {
     return (
       <div className="drawer-option" key={i} onClick={()=>toggleModalOn(option)}>

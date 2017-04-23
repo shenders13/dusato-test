@@ -6,10 +6,10 @@ const createSubmission = function(req, res) {
   console.log('newSubmission: ', newSubmission)
   Submission.create(newSubmission, function(err, submission) {
     if (err) {
-      console.log('success on server. error: ', error)
+      console.log('failed to create submission: ', error)
       res.status(400).send(error)
     } else {
-      console.log('success on server. submission: ', submission)
+      console.log('made submission. submission: ', submission)
       res.status(200).send(submission)
     }
   })

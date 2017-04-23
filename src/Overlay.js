@@ -9,6 +9,7 @@ class Overlay extends Component {
   }
 
   pressGo() {
+    debugger;
     const { submitEmail } = this.props;
     const emailString = this.textInput.value;
     if (isEmailValid(emailString)) {

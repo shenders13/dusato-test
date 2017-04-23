@@ -4,9 +4,8 @@ import './App.css';
 import Drawer from './Drawer';
 import Overlay from './Overlay'
 import { shuffle, drawerOptionsDefinition } from './helpers/helpers';
+import { postSubmission, test } from './helpers/ajaxHelpers';
 import AlertContainer from 'react-alert';
-
-
 
 class App extends Component {
 
@@ -58,6 +57,12 @@ class App extends Component {
   }
 
   submitEmail(email) {
+    postSubmission(
+      {
+        email, 
+        type: this.state.optionMostRecentlyClicked.text
+      }
+    )
     this.showAlert();
     this.toggleModalOff();
   }
@@ -82,7 +87,7 @@ class App extends Component {
         <div className="main-container">
           <Drawer {...{ toggleModalOn, drawerOptions }}/>
           <div className="main-content">
-            <p className="main-header"> The marketplace for hiring developers </p>
+            <p className="main-header"> The home for developers </p>
             <div className="button-row">
               <button className='main-button'>I'm a hacker</button>
               <button className='main-button no-margin'>I'm a hirer</button>
@@ -95,3 +100,6 @@ class App extends Component {
 }
 
 export default App;
+
+
+

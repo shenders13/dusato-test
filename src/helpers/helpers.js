@@ -35,13 +35,13 @@ const drawerOptionsDefinition = [
   {
     img: hackathon,
     text: "Find hackathons",
-    modalHeading: "Attend a hackathon?",
+    modalHeading: "Attend a hackathon!",
     modalBodyFirstSentence: "Sign up for early access & we'll send you hackathons happening near you for free."
   },
   {
     img: teachIcon,
     text: "Teach coding to others",
-    modalHeading: "Spread your coding knowledge",
+    modalHeading: "Spread your coding knowledge!",
     modalBodyFirstSentence: "Sign up for early access & we'll send you opportunites to spread your hacking chops."
   },
   {
