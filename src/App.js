@@ -51,8 +51,7 @@ class App extends Component {
   showAlert(){
     this.msg.show("Early access request successful! We'll be in touch.", {
       time: 7000,
-      type: 'success',
-      icon: <img src="./favicon.ico" />
+      type: 'success'
     });
   }
 
