@@ -50,6 +50,6 @@ db.once('open', function() {
 });
 
 
-app.listen(8080, function () {
-  console.log('Server listening on port 8080!');
+app.listen(process.env.PORT || 3000, function () {
+  console.log('Server listening on port ' + process.env.PORT || 3000);
 });
