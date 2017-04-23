@@ -1,14 +1,30 @@
 
 echo "------------------------------------------------- \n"
-echo "---------------- Deploying Dusato --------------- \n"
+echo "-------------- Staging & Commiting --------------- \n"
 echo "------------------------------------------------- \n"
 
 echo "Staging and committing..."
+
 git add .
 git commit -m 'commit before deploy'
+
+echo "------------------------------------------------- \n"
+echo "------------ Building new version --------------- \n"
+echo "------------------------------------------------- \n"
+
 echo "Building new version"
 npm run build
+
+echo "------------------------------------------------- \n"
+echo "--------------- Pushing to GitHub --------------- \n"
+echo "------------------------------------------------- \n"
+
 echo "Pushing to GitHub..."
 git push origin master
+
+echo "------------------------------------------------- \n"
+echo "------------- Deploying to Heroku --------------- \n"
+echo "------------------------------------------------- \n"
+
 echo "Pushing to Heroku..."
 git push heroku master
