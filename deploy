@@ -1,0 +1,14 @@
+
+echo "------------------------------------------------- \n"
+echo "---------------- Deploying Dusato --------------- \n"
+echo "------------------------------------------------- \n"
+
+echo "Staging and committing..."
+git add .
+git commit -m 'commit before deploy'
+echo "Building new version"
+npm run build
+echo "Pushing to GitHub..."
+git push origin master
+echo "Pushing to Heroku..."
+git push heroku master
