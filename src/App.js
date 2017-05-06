@@ -87,10 +87,7 @@ class App extends Component {
           <Drawer {...{ toggleModalOn, drawerOptions }}/>
           <div className="main-content">
             <p className="main-header"> The home for developers </p>
-            <div className="button-row">
-              <button className='main-button'>I'm a hacker</button>
-              <button className='main-button no-margin'>I'm a hirer</button>
-            </div>
+
           </div>
         </div>
       </div>
