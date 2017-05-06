@@ -6,6 +6,7 @@ import Overlay from './Overlay'
 import { shuffle, drawerOptionsDefinition } from './helpers/helpers';
 import { postSubmission, test } from './helpers/ajaxHelpers';
 import AlertContainer from 'react-alert';
+import ReactGA from 'react-ga';
 
 class App extends Component {
 
@@ -26,20 +27,35 @@ class App extends Component {
   }
 
   componentWillMount() {
+    ReactGA.initialize('UA-98638238-1');
+
+    ReactGA.pageview(window.location.pathname);
     const drawerOptions = shuffle(drawerOptionsDefinition);
     this.setState({drawerOptions});
   }
 
   toggleModalOn(option) {
-      this.setState(
-        { 
-          showModal: true,
-          optionMostRecentlyClicked: option
-        }
-      )
+    ReactGA.event({
+      action: 'Opened Modal',
+      optionClicked: option,
+      drawerOptions: this.state.drawerOptions
+    });
+    this.setState(
+      { 
+        showModal: true,
+        optionMostRecentlyClicked: option
+      }
+    )
   }
 
-  toggleModalOff(option) {
+  toggleModalOff(toggledCloseWithoutSubmitting = true) {
+    if (toggledCloseWithoutSubmitting) {
+      ReactGA.event({
+        action: 'Closed Modal without submitting their email',
+        optionClicked: this.state.optionMostRecentlyClicked,
+        drawerOptions: this.state.drawerOptions
+      });
+    }
     this.setState(
       { 
         showModal: false,
@@ -56,6 +72,11 @@ class App extends Component {
   }
 
   submitEmail(email) {
+    ReactGA.event({
+        action: 'Submitted email',
+        optionClicked: this.state.optionMostRecentlyClicked,
+        drawerOptions: this.state.drawerOptions
+    });
     postSubmission(
       {
         email, 
@@ -63,7 +84,7 @@ class App extends Component {
       }
     )
     this.showAlert();
-    this.toggleModalOff();
+    this.toggleModalOff(false);
   }
 
   render() {
@@ -87,7 +108,6 @@ class App extends Component {
           <Drawer {...{ toggleModalOn, drawerOptions }}/>
           <div className="main-content">
             <p className="main-header"> The home for developers </p>
-
           </div>
         </div>
       </div>

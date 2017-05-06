@@ -28,7 +28,6 @@ const test = function(submission, callback) {
   fetch('/test', {
   })
   .then(response => {
-    debugger;
     console.log('response: ', response.body)
   })
   .catch( e => {
