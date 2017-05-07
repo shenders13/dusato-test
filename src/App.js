@@ -36,9 +36,9 @@ class App extends Component {
 
   toggleModalOn(option) {
     ReactGA.event({
+      category: 'User',
       action: 'Opened Modal',
-      optionClicked: option,
-      drawerOptions: this.state.drawerOptions
+      label: option
     });
     this.setState(
       { 
@@ -51,9 +51,9 @@ class App extends Component {
   toggleModalOff(toggledCloseWithoutSubmitting = true) {
     if (toggledCloseWithoutSubmitting) {
       ReactGA.event({
+        category: 'User',
         action: 'Closed Modal without submitting their email',
-        optionClicked: this.state.optionMostRecentlyClicked,
-        drawerOptions: this.state.drawerOptions
+        label: this.state.optionMostRecentlyClicked
       });
     }
     this.setState(
@@ -73,9 +73,9 @@ class App extends Component {
 
   submitEmail(email) {
     ReactGA.event({
-        action: 'Submitted email',
-        optionClicked: this.state.optionMostRecentlyClicked,
-        drawerOptions: this.state.drawerOptions
+      category: 'User',
+      action: 'Submitted email',
+      label: this.state.optionMostRecentlyClicked
     });
     postSubmission(
       {
