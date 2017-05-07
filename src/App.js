@@ -38,7 +38,7 @@ class App extends Component {
     ReactGA.event({
       category: 'User',
       action: 'Opened Modal',
-      label: option
+      label: option.text
     });
     this.setState(
       { 
@@ -53,7 +53,7 @@ class App extends Component {
       ReactGA.event({
         category: 'User',
         action: 'Closed Modal without submitting their email',
-        label: this.state.optionMostRecentlyClicked
+        label: this.state.optionMostRecentlyClicked.text
       });
     }
     this.setState(
@@ -75,7 +75,7 @@ class App extends Component {
     ReactGA.event({
       category: 'User',
       action: 'Submitted email',
-      label: this.state.optionMostRecentlyClicked
+      label: this.state.optionMostRecentlyClicked.text
     });
     postSubmission(
       {
