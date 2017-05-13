@@ -19,6 +19,7 @@ class Drawer extends Component {
     const { toggleModalOn, drawerOptions } = this.props;
     return (  
         <div className="drawer">
+          <p className='mobile-home-for-devs-header'>The home of developers</p>
           { drawerOptions.map((option, i)=> this.renderDrawerOption(option, toggleModalOn, i)) }
         </div>
     );

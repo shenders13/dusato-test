@@ -1,7 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
 const postSubmission = function(submission, callback) {
-  console.log('submission about to POST: ', submission)
   fetch('/submission', {
     method: 'POST',
     headers: {
@@ -14,26 +13,48 @@ const postSubmission = function(submission, callback) {
     })
   })
   .then(response => {
-    console.log('responseone: ', response)
   })
   .then(response => {
-    console.log('responsetwo: ', response)
   })
   .catch( e => {
-    console.log('error: ', e)
   })
 }
 
-const test = function(submission, callback) {
-  fetch('/test', {
+const postModalClick = function(type, callback) {
+  fetch('/modal_click', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      type: type.type
+    })
   })
   .then(response => {
-    console.log('response: ', response.body)
+  })
+  .then(response => {
   })
   .catch( e => {
-    console.log('error: ', e)
+  })
+}
+
+const registerPageView = userInfo => {
+  fetch('/register_view', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userInfo)
+  })
+  .then(response => {
+  })
+  .then(response => {
+  })
+  .catch( e => {
   })
 }
 
 
-export { postSubmission, test };
+export { postSubmission, postModalClick, registerPageView };

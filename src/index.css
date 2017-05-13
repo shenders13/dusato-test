@@ -37,17 +37,46 @@ body {
   vertical-align: middle;
 }
 
-.drawer {
-  width: 25%;
-  height: 100%;
+
+
+@media (max-width: 500px) {
+  .main-content {
+    display: none;
+  }
+  .drawer {
+    width: 100%;
+    height: 100%;
+    display: inline;
+    background: #177cf9;
+    padding-top: 50px;
+  }
+  .mobile-home-for-devs-header {
+    font-size: 18px;
+    color: #5a4646;
+    display: inline-block;
+    text-align: center;
+    padding: 0 0 20px 0;
+    color: white;
+  }
 }
 
-.main-content {
-  width: 75%;
-  height: 100%;
-  background-color: #177CF9;
-  display: inline-block;  
+@media (min-width: 500px) {
+  .main-content {
+    width: 75%;
+    height: 100%;
+    background-color: #177CF9;
+    display: inline-block;  
+  }
+  .drawer {
+    width: 25%;
+    height: 100%;
+  }
+  .mobile-home-for-devs-header {
+    display: none;
+  }
 }
+
+
 
 .main-container {
   width: 100%;

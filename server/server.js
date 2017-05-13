@@ -11,12 +11,9 @@ const multer = require('multer');
 const errorHandler = require('errorhandler');
 
 
-
-
 // const bodyParser = require('body-parser')
 const serverHelpers = require('./serverHelpers')
 const app = express();
-const Submission = require('../db/submissionModel.js');
 
 // app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
@@ -43,11 +40,8 @@ app.use(multer());
 
 
 app.post('/submission', serverHelpers.createSubmission);
-// app.get('/', (req, res) => {
-//   console.log('yoyo')
-//   console.log(path.join(__dirname, '../build/'))
-//   res.sendFile(path.join(__dirname, '../build/'));
-// });
+app.post('/modal_click', serverHelpers.registerModalClick);
+app.post('/register_view', serverHelpers.registerPageView);
 
 
 const mongoose = require('mongoose');
