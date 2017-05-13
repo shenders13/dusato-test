@@ -1,6 +1,10 @@
 import fetch from 'isomorphic-fetch';
 
 const postSubmission = function(submission, callback) {
+  window.fbq('track', 'CompleteRegistration', {
+    email: submission.email,
+    type: submission.type
+  });
   fetch('/submission', {
     method: 'POST',
     headers: {
@@ -21,6 +25,10 @@ const postSubmission = function(submission, callback) {
 }
 
 const postModalClick = function(type, callback) {
+  window.fbq('track', 'ViewContent', {
+    type: type.type,
+  });
+
   fetch('/modal_click', {
     method: 'POST',
     headers: {
